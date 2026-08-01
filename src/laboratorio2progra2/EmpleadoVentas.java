@@ -1,14 +1,15 @@
-
 package laboratorio2progra2;
 
+import java.io.File;
+import java.util.Calendar;
 
 public class EmpleadoVentas extends Empleado {
     
     private double[] ventasMensuales;
     private double tasaComision;
 
-    public EmpleadoVentas(String codigo, String nombre, java.util.Date fechaContratacion, double salarioBase, String foto, double tasaComision) {
-        super(codigo, nombre, fechaContratacion, salarioBase, foto);
+    public EmpleadoVentas(String codigo, String nombre, double salario_b, Calendar contrato, File fotoArchivo, double tasaComision) {
+        super(codigo, nombre, salario_b, contrato, fotoArchivo);
         this.ventasMensuales = new double[12];
         this.tasaComision = tasaComision;
     }
@@ -23,14 +24,14 @@ public class EmpleadoVentas extends Empleado {
         return this.ventasMensuales[mesActual] * this.tasaComision;
     }
 
-    @Override
-    public double calcularPago() {
-        int horas = getHorasTrabajadas();
-        if (horas > 160) {
-            horas = 160;
+    
+    public double calcularPagoEmpleado() {
+        double horas = getHoras_t(); 
+        if (horas > 160.0) {
+            horas = 160.0;
         }
         
-        double salarioProporcional = (getSalarioBase() / 160.0) * horas;
+        double salarioProporcional = (getSalario_b() / 160.0) * horas;
         return salarioProporcional + calcularComision();
     }
 
@@ -42,8 +43,7 @@ public class EmpleadoVentas extends Empleado {
         return total;
     }
 
-    @Override
     public String mostrarInformacion() {
-        return super.mostrarInformacion() + "  Total Ventas Anuales: " + calcularVentasAnuales();
+        return "Código: " + getCodigo() + "  Nombre: " + getNombre() + "  Total Ventas Anuales:  " + calcularVentasAnuales();
     }
 }
