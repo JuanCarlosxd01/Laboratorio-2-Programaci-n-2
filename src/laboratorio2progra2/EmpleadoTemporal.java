@@ -12,12 +12,29 @@ public class EmpleadoTemporal extends Empleado{
         this.finContrato = finContrato;
     }
     
+    public Calendar finContrato(){
+        return finContrato;
+    }
     
-    public void calcularPagoadicional(){
+    
+    public double calcularPagocondicionado(double Salario){
         Calendar fechaActual = Calendar.getInstance();
-        if(fechaActual.after(finContrato)){
-            
+        if(fechaActual.before(finContrato) || fechaActual.equals(finContrato)){
+            return Salario;
         }
+        
+        else{
+            return 0;
+        }
+    }
+    
+    public void actualizarFincontrato(Calendar nuevaFecha){
+        this.finContrato = nuevaFecha;
+    }
+    
+    @Override
+    public String toString(){
+        return super.mostrarInformacion() + "\n Fecha fin de contrato: " + finContrato.get(Calendar.DAY_OF_MONTH) + "/" + finContrato.get(Calendar.MONTH) + "/" + finContrato.get(Calendar.YEAR);
     }
     
 }
