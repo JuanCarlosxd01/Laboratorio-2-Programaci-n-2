@@ -60,4 +60,25 @@ public class Empresa {
         } else {
             System.out.println("Acción denegada: El empleado " + emp.getNombre() + " no esta en el  departamento de ventas.");
         }
+        
+        
     }
+    public void actualizarFechaContrato(String codigo, Calendar fecha_n){
+            Empleado emp=buscarEmpleadoPorCodigo(codigo);
+            
+            if (emp==null){
+                System.out.println("No se encuentra ningun empleado con este codigo");
+                return;
+                
+            }
+            if (emp instanceof EmpleadoTemporal){
+                EmpleadoTemporal e_temp= (EmpleadoTemporal) emp;
+                e_temp.actualizarFinContrato(fecha_n);
+                System.out.println("Fecha de fin de contrato ha sido actualizada.");
+            }
+            
+            else{
+                System.out.println("No se ha podido cambiar la fecha de fin de contrato para el empleado: "+emp.getNombre());
+            }
+        }
+}

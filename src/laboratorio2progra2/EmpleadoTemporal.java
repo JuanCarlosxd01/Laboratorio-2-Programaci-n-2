@@ -1,14 +1,15 @@
 
 package laboratorio2progra2;
 
+import java.io.File;
 import java.util.Calendar;
 
 public class EmpleadoTemporal extends Empleado{
     
     private Calendar finContrato;
     
-    public EmpleadoTemporal(Calendar finContrato){
-        super(Empleado);
+    public EmpleadoTemporal(String codigo, String nombre, double salario_b, Calendar contrato, File fotoArchivo, Calendar finContrato){
+        super(codigo, nombre, salario_b, contrato, fotoArchivo);
         this.finContrato = finContrato;
     }
     
