@@ -3,6 +3,7 @@ package laboratorio2progra2;
 
 import javax.swing.*;
 import com.toedter.calendar.JDateChooser;
+import java.awt.GridLayout;
 import javax.swing.JFileChooser;
 import java.io.File;
 import java.awt.GridLayout;
