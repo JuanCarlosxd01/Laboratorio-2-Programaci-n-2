@@ -3,6 +3,8 @@ package laboratorio2progra2;
 
 import javax.swing.*;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JFileChooser;
+import java.io.File;
 
 public class InterfazGrafica extends JFrame {
     
@@ -31,6 +33,8 @@ public class InterfazGrafica extends JFrame {
         formulario(Registrar);
         tipoEmpleado(Registrar);
         cambiarFecha(Registrar);
+        cambiarImagen(Registrar);
+        registrar(Registrar);
     }
     
     public static void formulario(JPanel Registrar){
@@ -70,6 +74,27 @@ public class InterfazGrafica extends JFrame {
         JDateChooser finContrato = new JDateChooser();
         Registrar.add(new JLabel("Fin Contrato"));
         Registrar.add(finContrato);
+    }
+    
+    public static void cambiarImagen(JPanel Registrar){
+        JButton botonFoto = new JButton("Seleccionar foto");
+        
+        botonFoto.addActionListener(e ->{
+            JFileChooser chooser = new JFileChooser();
+            int opcion = chooser.showOpenDialog("hola");
+            
+            if(opcion == JFileChooser.APPROVE_OPTION){
+                File foto = chooser.getSelectedFile();
+                System.out.println(foto.getAbsolutePath());
+            }
+        });
+    }
+    
+    public static void registrar(JPanel Registrar){
+        JButton botonRegistrar = new JButton("Registrar");
+        botonRegistrar.addActionListener(e -> {
+            
+        });
     }
     
     
