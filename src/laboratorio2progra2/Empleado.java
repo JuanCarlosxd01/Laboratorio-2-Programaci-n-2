@@ -3,6 +3,8 @@ package laboratorio2progra2;
 
 import java.io.File;
 import java.util.Calendar;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -109,4 +111,38 @@ public class Empleado {
         //en caso que la deduccion supere al salario proporcional
         return Math.max(0,pago_total);
     }
+    
+    public String mostrarInformacion(){
+        String fecha_s="No hay fecha registrada.";
+        
+        //por si no hay una fecha original de contratacion se le da
+        if (contrato!=null){
+            int dia=contrato.get(Calendar.DAY_OF_MONTH);
+            int mes=contrato.get(Calendar.MONTH);
+            int anyo=contrato.get(Calendar.YEAR);
+            
+            fecha_s=String.format("%02d/%02d/%d", dia, mes, anyo);
+        }
+        
+        return "Empleado [" + codigo + "] - " + nombre + " (Contratado: " + fecha_s + ")";
+    }
+    
+    public static File seleccionarFile(){
+        int resultado;
+        JFileChooser selec=new JFileChooser();
+        selec.setDialogTitle("Seleccione la foto del empleado");
+        
+        //linea para ayudar a solo ver los files de tipo imagenes.
+        FileNameExtensionFilter filter=new FileNameExtensionFilter("\"Archivos de Imagen (JPG, PNG)", "jpg", "jpeg", "png");
+        
+        resultado=selec.showOpenDialog(null);
+        if(resultado==JFileChooser.APPROVE_OPTION){
+            return selec.getSelectedFile();
+        }
+        
+        return null;
+            
+    }
+    
+    
 }
