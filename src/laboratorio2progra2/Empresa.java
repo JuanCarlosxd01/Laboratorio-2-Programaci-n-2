@@ -22,12 +22,12 @@ public class Empresa {
 
     public boolean registrarEmpleado(Empleado nuevoEmpleado) {
         if (buscarEmpleadoPorCodigo(nuevoEmpleado.getCodigo()) != null) {
-            System.out.println("Ya existe un empleado registrado con ese código " + nuevoEmpleado.getCodigo());
+            System.out.println("Ya existe un empleado registrado con e código " + nuevoEmpleado.getCodigo());
             return false;
         }
         
         empleados.add(nuevoEmpleado);
-        System.out.println("Empleado " + nuevoEmpleado.getNombre() + " registrado.");
+        System.out.println("Empleado " + nuevoEmpleado.getNombre() + " registrado exitosamente.");
         return true;
     }
 
@@ -57,4 +57,36 @@ public class Empresa {
         } else {
             System.out.println("Acción denegada: El empleado " + emp.getNombre() + " no esta en el  departamento de ventas.");
         }
+        
+        
     }
+    public void actualizarFechaContrato(String codigo, Calendar fecha_n){
+            Empleado emp=buscarEmpleadoPorCodigo(codigo);
+            
+            if (emp==null){
+                System.out.println("No se encuentra ningun empleado con este codigo");
+                return;
+                
+            }
+            if (emp instanceof EmpleadoTemporal){
+                EmpleadoTemporal e_temp= (EmpleadoTemporal) emp;
+                e_temp.actualizarFinContrato(fecha_n);
+                System.out.println("Fecha de fin de contrato ha sido actualizada.");
+            }
+            
+            else{
+                System.out.println("No se ha podido cambiar la fecha de fin de contrato para el empleado: "+emp.getNombre());
+            }
+        }
+    
+    public double calcularPagoMensual(String codigo){
+        Empleado e=buscarEmpleadoPorCodigo(codigo);
+        
+        if (e!=null){
+            return e.calcularPagoEmpleado();
+        }
+        
+        System.out.println("No se encuentra ningun empleado con este codigo");
+        return 0.0;
+    }
+}
