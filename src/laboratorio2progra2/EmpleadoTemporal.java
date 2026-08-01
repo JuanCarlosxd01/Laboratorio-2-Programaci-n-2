@@ -18,10 +18,10 @@ public class EmpleadoTemporal extends Empleado{
     }
     
     
-    public double calcularPagocondicionado(double Salario){
+    public double calcularPagocondicionado(){
         Calendar fechaActual = Calendar.getInstance();
         if(fechaActual.before(finContrato) || fechaActual.equals(finContrato)){
-            return Salario;
+            return getHoras_t() * getSalario_b();
         }
         
         else{
