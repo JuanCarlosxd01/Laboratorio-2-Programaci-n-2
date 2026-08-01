@@ -25,12 +25,12 @@ public class Empresa {
 
     public boolean registrarEmpleado(Empleado nuevoEmpleado) {
         if (buscarEmpleadoPorCodigo(nuevoEmpleado.getCodigo()) != null) {
-            System.out.println("Ya existe un empleado registrado con ese código " + nuevoEmpleado.getCodigo());
+            System.out.println("Ya existe un empleado registrado con e código " + nuevoEmpleado.getCodigo());
             return false;
         }
         
         empleados.add(nuevoEmpleado);
-        System.out.println("Empleado " + nuevoEmpleado.getNombre() + " registrado.");
+        System.out.println("Empleado " + nuevoEmpleado.getNombre() + " registrado exitosamente.");
         return true;
     }
 

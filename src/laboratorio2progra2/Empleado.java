@@ -91,24 +91,18 @@ public class Empleado {
         this.horas_t=horas;
     }
     
-    // metodo para calcular el pago del empleado:
-    
-    //Calcular pago: implementa la regla del empleado estándar (ver fórmula abajo). Las subclases sobrescriben este método para aplicar su propia regla, tomando como base un mes estándar de 160 horas. Si las horas trabajadas superan las 160, el cálculo se limita a este máximo.
     
     public double calcularPagoEmpleado(){
         double horas_ef,salario_p,deduc,pago_total;
         
         horas_ef=Math.min(this.horas_t, 160.0);
         
-        //formula para sacar el salario proporcional al salario base y las horas trabajadas
         salario_p=((this.salario_b/160.0)*horas_ef);
         
-        //deducion del 3.5% del salario base
         deduc=this.salario_b*0.035;
         
         pago_total=(salario_p-deduc);
         
-        //en caso que la deduccion supere al salario proporcional
         return Math.max(0,pago_total);
     }
     
