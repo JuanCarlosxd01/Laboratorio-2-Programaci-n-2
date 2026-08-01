@@ -1,13 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package laboratorio2progra2;
 
-/**
- *
- * @author nosoy
- */
-public class EmpleadoTemporal {
+import java.util.Calendar;
+
+public class EmpleadoTemporal extends Empleado{
+    
+    private Calendar finContrato;
+    
+    public EmpleadoTemporal(Calendar finContrato){
+        super(Empleado);
+        this.finContrato = finContrato;
+    }
+    
+    
+    public void calcularPagoadicional(){
+        Calendar fechaActual = Calendar.getInstance();
+        if(fechaActual.after(finContrato)){
+            
+        }
+    }
     
 }
