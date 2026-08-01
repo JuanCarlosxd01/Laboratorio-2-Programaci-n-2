@@ -81,4 +81,15 @@ public class Empresa {
                 System.out.println("No se ha podido cambiar la fecha de fin de contrato para el empleado: "+emp.getNombre());
             }
         }
+    
+    public double calcularPagoMensual(String codigo){
+        Empleado e=buscarEmpleadoPorCodigo(codigo);
+        
+        if (e!=null){
+            return e.calcularPagoEmpleado();
+        }
+        
+        System.out.println("No se encuentra ningun empleado con este codigo");
+        return 0.0;
+    }
 }
